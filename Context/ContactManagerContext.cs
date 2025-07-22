@@ -1,5 +1,6 @@
 ﻿using contact_Manger.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace contact_Manger.Context
 
@@ -14,6 +15,13 @@ namespace contact_Manger.Context
 
         }
 
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Users>().HasData(new Users { Email = "user123@gmail.com", Name = "user1", Password = "A12345678", Id=1 });
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+
     }
 }

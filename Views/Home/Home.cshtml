@@ -14,6 +14,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+
     <style>
         html, body {
             margin: 0;
@@ -34,10 +37,11 @@
         <div class="container-fluid d-flex justify-content-between">
             <a class="navbar-brand" href="#">Contact Manager</a>
             <div class="d-flex gap-3">
-                <a class="navbar-brand " href="#" >About</a>
+                <a class="navbar-brand " href="#" >Add</a>
                 <a class="navbar-brand " href="#">Notification</a>
-                <hr />
-                <a class="navbar-brand " href="#">Login</a>
+                <hr class="text-bg-light"/>
+                <a class="navbar-brand " href="#">celender</a>
+                <a class="navbar-brand " href="#">login</a>
             </div>
         </div>
     </nav>
@@ -45,14 +49,64 @@
     <div class="position-relative content-area bg-danger">
 
         <!-- Left Sidebar -->
-        <div class="bg-secondary vh-100 position-absolute top-0 start-0" style="width: 50px;">
+        <div class=" vh-100 position-absolute top-0 start-0 d-flex flex-column  align-items-center py-3" style="width: 60px; background-color: white">
+            
+                <a href="#">
+                <span class="material-symbols-outlined my-3">
+                        home_app_logo
+                    </span>
+                </a>
+                <a>
+                <span class="material-symbols-outlined my-3">
+                        contacts_product
+                    </span>
+                </a>
+                <a>
+                    <span class="material-symbols-outlined my-3">
+                        local_taxi
+                    </span>
+                </a>
+                <a>
+                <span class="material-symbols-outlined my-3">
+                        amp_stories
+                    </span>
+                </a>
+                <a>
+                <span class="material-symbols-outlined my-3">
+                        account_circle_off
+                    </span>
+                </a>
+                <a>
+                <span class="material-symbols-outlined my-3">
+                        earthquake
+                    </span>
+                </a>
+            
         </div>
 
         <!-- Main Content Centered -->
         <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-            <div class="vw-100 h-100 bg-black text-white d-flex justify-content-center align-items-center text-center">
+            <div class="vw-100 h-100 bg-white text-black d-flex justify-content-center align-items-center">
                 <div class="m-3 bg-success" style="width:90%; height:100%">
-                    Sub container
+                    <h2 class="px-5">Contacts</h2>
+                    <p class="px-5">View all your contacts </p>
+                    <hr class="bg-white" />
+
+                    <table class="table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Place</th>
+                                <th>DOB</th>
+                                <th>Open At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Add some rows here -->
+                        </tbody>
+                    </table>
+
                 </div>
                
             </div>

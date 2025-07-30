@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using contact_Manger.Context;
 
@@ -10,9 +11,11 @@ using contact_Manger.Context;
 namespace contact_Manger.Migrations
 {
     [DbContext(typeof(ContactManagerContext))]
-    partial class ContactManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20250730164102_Added the relationship with the user and the contact ")]
+    partial class Addedtherelationshipwiththeuserandthecontact
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

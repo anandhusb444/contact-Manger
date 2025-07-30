@@ -19,6 +19,11 @@ namespace contact_Manger.Context
         {
             modelBuilder.Entity<Users>().HasData(new Users { Email = "user123@gmail.com", Name = "user1", Password = "A12345678", Id=1 });
 
+            modelBuilder.Entity<Users>()
+                .HasMany(c => c.contacts)
+                .WithOne(u => u.user)
+                .HasForeignKey(f => f.UserId);
+
             base.OnModelCreating(modelBuilder);
         }
 

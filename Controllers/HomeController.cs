@@ -33,5 +33,11 @@ namespace contact_Manger.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult AddContact()
+        {
+            return View();
+        }
     }
 }

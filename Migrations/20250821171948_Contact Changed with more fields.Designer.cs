@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using contact_Manger.Context;
 
@@ -11,9 +12,11 @@ using contact_Manger.Context;
 namespace contact_Manger.Migrations
 {
     [DbContext(typeof(ContactManagerContext))]
-    partial class ContactManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20250821171948_Contact Changed with more fields")]
+    partial class ContactChangedwithmorefields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,6 +40,7 @@ namespace contact_Manger.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DOB")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -49,6 +53,7 @@ namespace contact_Manger.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Remark")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserId")

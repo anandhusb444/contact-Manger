@@ -1,4 +1,7 @@
-﻿@{
+﻿@model IEnumerable<contact_Manger.Models.Contact>
+
+
+@{
     Layout = null;
     ViewData["Title"] = "Contact Manager";
 }
@@ -197,6 +200,23 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if(Model != null && Model.Any())
+                            {
+                                foreach(var contact in Model)
+                                {
+                                    <tr>
+                                        <td>@contact.Name</td>
+                                        <td>@contact.Phone</td>
+                                        <td>@contact.Address</td>
+                                        <td>@contact.DOB</td>
+                                        <td>@contact.CreatedAt</td>
+                                        <td>@contact.Remark
+                                            <span class="badge-soft-purple" style="margin-left:12px;">Off</span>
+                                            <span class="badge-soft-green">Active</span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
                             <tr>
                                 <td>Anandhu</td>
                                 <td>1234567890</td>

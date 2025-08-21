@@ -46,29 +46,34 @@
             <div class="card-body p-4">
                 <h4 class="fw-bold mb-4 text-center" style="color: #333;">Add New Contact</h4>
 
-                <form asp-action="Add" method="post">
+                <form asp-action="AddContact" method="post">
                     <!-- Name -->
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Full Name</label>
+                        <label for="Name" class="form-label fw-semibold">Full Name</label>
                         <input type="text" name="Name" class="form-control" placeholder="Enter full name" required>
                     </div>
 
                     <!-- Number -->
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Phone Number</label>
-                        <input type="tel" name="Number" class="form-control" placeholder="Enter phone number" required>
+                        <label for="Phone" class="form-label fw-semibold">Phone Number</label>
+                        <input type="tel" name="Phone" class="form-control" placeholder="Enter phone number" required>
                     </div>
 
                     <!-- Place -->
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Place</label>
-                        <input type="text" name="Place" class="form-control" placeholder="Enter place">
+                        <label for="Address" class="form-label fw-semibold">Place</label>
+                        <input type="text" name="Address" class="form-control" placeholder="Enter place">
                     </div>
 
                     <!-- Date of Birth -->
                     <div class="mb-4">
-                        <label class="form-label fw-semibold">Date of Birth</label>
-                        <input type="date" name="DateOfBirth" class="form-control">
+                        <label for="DOB" class="form-label fw-semibold">Date of Birth</label>
+                        <input type="date" name="DOB" class="form-control">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="Remark" class="form-label fw-semibold">Remarks</label>
+                        <input type="text" name="Remark" class="form-control">
                     </div>
 
                     <!-- Buttons -->

@@ -46,20 +46,28 @@ namespace contact_Manger.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddContact(Contact contact)
+        public async Task<IActionResult> AddContact(Contact cont)
         {
 
-            var isContactExist = await _context.contacts.FirstOrDefaultAsync(c => c.Name == contact.Name && c.Phone == contact.Phone);
+            
+                var isContactExist = await _context.contacts.FirstOrDefaultAsync(c => c.Name == cont.Name && c.Phone == cont.Phone);
 
-            if(isContactExist == null)
-            {
+                if (isContactExist == null)
+                {
                 _context.contacts.Add(new Contact
                 {
-                    Name = contact.Name,
-                    Phone = contact.Phone,
-                    Address = contact.Address
+                    Name = cont.Name,
+                    Phone = cont.Phone,
+                    Address = cont.Address,
+                    DOB = cont.DOB,
+                    Remark = cont.Remark
                 });
-            }
+
+                    await _context.SaveChangesAsync();
+                }
+
+                
+            
 
             return View();
         }

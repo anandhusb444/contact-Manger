@@ -8,7 +8,7 @@ namespace contact_Manger.Context
     public class ContactManagerContext : DbContext
     {
         public DbSet<Users> users { get; set; }
-        public DbSet<Contanct> contacts { get; set;}
+        public DbSet<Contact> contacts { get; set;}
 
         public ContactManagerContext(DbContextOptions<ContactManagerContext> options) : base(options)
         {

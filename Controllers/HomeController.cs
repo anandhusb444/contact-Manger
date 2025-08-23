@@ -34,10 +34,30 @@ namespace contact_Manger.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Home()
+        [HttpGet]
+        public async Task<IActionResult> Home()
         {
-            return View();
+            try
+            {
+                var contacts = await _context.contacts.ToListAsync();
+                return View(contacts);
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return NotFound();
+
+            }
         }
+
+
+        //public IActionResult Home()
+        //{
+        //    return View();
+        //}
+
+
 
         [HttpGet]
         public IActionResult AddContact()
@@ -65,10 +85,7 @@ namespace contact_Manger.Controllers
 
                     await _context.SaveChangesAsync();
                 }
-
-                
             
-
             return View();
         }
     }

@@ -39,7 +39,9 @@ namespace contact_Manger.Controllers
         {
             try
             {
-                var contacts = await _context.contacts.ToListAsync();
+                int userId = HttpContext.Session.GetInt32("userId") ?? 0;
+
+                var contacts = await _context.contacts.Where(c => c.UserId == userId).Include(c => c.user).ToListAsync();
                 return View(contacts);
 
             }
@@ -72,21 +74,24 @@ namespace contact_Manger.Controllers
             
                 var isContactExist = await _context.contacts.FirstOrDefaultAsync(c => c.Name == cont.Name && c.Phone == cont.Phone);
 
+                int userId = HttpContext.Session.GetInt32("userId") ?? 0;
+
                 if (isContactExist == null)
                 {
-                _context.contacts.Add(new Contact
-                {
-                    Name = cont.Name,
-                    Phone = cont.Phone,
-                    Address = cont.Address,
-                    DOB = cont.DOB,
-                    Remark = cont.Remark
-                });
+                    _context.contacts.Add(new Contact
+                        {
+                            Name = cont.Name,
+                            Phone = cont.Phone,
+                            Address = cont.Address,
+                            DOB = cont.DOB,
+                            Remark = cont.Remark,
+                            UserId = userId
+                        });
 
                     await _context.SaveChangesAsync();
                 }
             
-            return View();
+            return View();      
         }
     }
 }

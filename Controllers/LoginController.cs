@@ -24,10 +24,13 @@ namespace contact_Manger.Controllers
             {
                 var isValidUser = _context.users.FirstOrDefault(user => user.Email == users.Email && user.Password == users.Password);
 
+                HttpContext.Session.SetInt32("userId", isValidUser?.Id ?? 0);
+
                 if (isValidUser != null)
                 {
+                    
                     Console.WriteLine("Valid user");
-                    return RedirectToAction("Home");
+                    return RedirectToAction("Home", "Home");
                 }
             }
             

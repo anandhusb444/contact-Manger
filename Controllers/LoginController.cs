@@ -1,6 +1,7 @@
 ﻿using contact_Manger.Context;
 using contact_Manger.Models;
 using Microsoft.AspNetCore.Mvc;
+using contact_Manger.DTOs;
 
 namespace contact_Manger.Controllers
 {
@@ -17,7 +18,7 @@ namespace contact_Manger.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(Users users)
+        public IActionResult Login(UserDto users)
         {
 
             if(ModelState.IsValid)
@@ -29,8 +30,12 @@ namespace contact_Manger.Controllers
                 if (isValidUser != null)
                 {
                     
-                    Console.WriteLine("Valid user");
                     return RedirectToAction("Home", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return View();
                 }
             }
             

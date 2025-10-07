@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Runtime.ExceptionServices;
 using contact_Manger.Context;
 using contact_Manger.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -92,6 +93,34 @@ namespace contact_Manger.Controllers
                 }
             
             return View();      
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteContact(int Id)
+        {
+            try
+            {
+                var IsContactValid = await _context.contacts.FindAsync(Id);
+
+
+                if(IsContactValid != null)
+                {
+                    _context.contacts.Remove(IsContactValid);
+                    await _context.SaveChangesAsync();
+                    return Json(new { success = true, message = "Contact deleted successfuly" });
+                }
+                else
+                {
+                    return Json ( new { success = false, message = "Invalid contact"});
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return Json (new {success = false, message = ex.Message});
+            }
         }
     }
 }

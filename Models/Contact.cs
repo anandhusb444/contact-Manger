@@ -10,6 +10,7 @@
         public string? DOB { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public string? Remark { get; set; } 
+        public bool IsDeleted { get; set; }
         public int? UserId { get; set; }
         public Users user { get; set; }
 

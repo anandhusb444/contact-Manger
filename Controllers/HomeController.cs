@@ -42,7 +42,7 @@ namespace contact_Manger.Controllers
             {
                 int userId = HttpContext.Session.GetInt32("userId") ?? 0;
 
-                var contacts = await _context.contacts.Where(c => c.UserId == userId).Include(c => c.user).ToListAsync();
+                var contacts = await _context.contacts.Where(c => c.UserId == userId && c.IsDeleted == false).Include(c => c.user).ToListAsync();
                 return View(contacts);
 
             }
@@ -103,10 +103,9 @@ namespace contact_Manger.Controllers
             {
                 var IsContactValid = await _context.contacts.FindAsync(Id);
 
-
                 if(IsContactValid != null)
                 {
-                    _context.contacts.Remove(IsContactValid);
+                    IsContactValid.IsDeleted = true;
                     await _context.SaveChangesAsync();
                     return Json(new { success = true, message = "Contact deleted successfuly" });
                 }

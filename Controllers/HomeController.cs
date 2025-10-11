@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Runtime.ExceptionServices;
 using contact_Manger.Context;
+using contact_Manger.DTOs;
 using contact_Manger.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -42,7 +43,19 @@ namespace contact_Manger.Controllers
             {
                 int userId = HttpContext.Session.GetInt32("userId") ?? 0;
 
-                var contacts = await _context.contacts.Where(c => c.UserId == userId && c.IsDeleted == false).Include(c => c.user).ToListAsync();
+                var contacts = await _context.contacts.AsNoTracking()
+                    .Where(c => c.UserId == userId && c.IsDeleted == false)
+                    .Select(cont => new ContactDto
+                    (
+                        cont.Id,
+                        cont.Name,
+                        cont.Phone,
+                        cont.Address,
+                        cont.CreatedAt,
+                        cont.DOB,
+                        cont.Remark
+                    )).ToArrayAsync();
+
                 return View(contacts);
 
             }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<contact_Manger.Models.Contact>
+﻿@model IEnumerable<contact_Manger.DTOs.ContactDto>
 
 
 @{
@@ -218,7 +218,7 @@
                                         <td>@contact.Phone</td>
                                         <td>@contact.Address</td>
                                         <td>@contact.DOB</td>
-                                        <td>@contact.CreatedAt</td>
+                                        <td>@contact.CretedAd</td>
                                         <td>@contact.Remark
                                             <span class="badge-soft-purple delete-contact" data-id="@contact.Id" style="cursor:pointer; margin-left:12px;">Delete</span>
                                             <span class="badge-soft-green">Update</span>

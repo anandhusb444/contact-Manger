@@ -221,7 +221,14 @@
                                         <td>@contact.CretedAd</td>
                                         <td>@contact.Remark
                                             <span class="badge-soft-purple delete-contact" data-id="@contact.Id" style="cursor:pointer; margin-left:12px;">Delete</span>
-                                            <span class="badge-soft-green">Update</span>
+                                            <span class="badge-soft-green update-contact" 
+                                            data-id="@contact.Id" 
+                                            data-name="@contact.Name"
+                                            data-phone="@contact.Phone"
+                                            data-address="@contact.Address"
+                                            data-dob="@contact.DOB"
+                                            data-remark="@contact.Remark"
+                                            style="cursor:pointer; margin-left:12px">Update</span>
                                              
                                         </td>
                                     </tr>
@@ -235,12 +242,14 @@
     </div>
 
     <!-- Bootstrap JS -->
+    @Html.Partial("UpdatePopUp")
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="~/js/DeleteContact.js"></script>
+    <script src="~/js/UpdateContact.js"></script>
 
 </body>
 </html>

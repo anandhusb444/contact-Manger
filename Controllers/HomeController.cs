@@ -134,5 +134,40 @@ namespace contact_Manger.Controllers
                 return Json (new {success = false, message = ex.Message});
             }
         }
+
+        [HttpGet]
+        public IActionResult UpdatePopUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePopUp(int id, ContactDto contactData)
+        {
+            try
+            {
+                var contact = await _context.contacts.FindAsync(id);
+
+                if(contact == null)
+                {
+                    return Json(new { success = false, message = "Invalid contact" });
+                }
+
+                contact.Phone = contactData.Phone;
+                contact.Address = contactData.Address;
+                contact.Remark = contactData.Remark;
+                contact.DOB = contactData.DOB;
+                contact.Name = contactData.Name;
+
+                await _context.SaveChangesAsync();
+                return Json ( new { success = true, message = "contact updated successfully" });
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

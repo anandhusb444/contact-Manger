@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+
+<!-- ===== HTML ===== -->
+<!-- Edit button example (could be rendered in a foreach row) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/css/site.css"/>
+
+
+
+<!-- Modal markup -->
+<div id="editModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+
+    <div class="modal-panel" role="document">
+        <button class="modal-close" aria-label="Close" data-close>&times;</button>
+
+        <h2 class="modal-title">Edit Contact</h2>
+
+        <!-- Change action to your controller action, e.g., /Contacts/Edit -->
+        <form id="editForm" method="post" action="/Home/UpdatePopUp">
+            <!-- include antiforgery token in Razor: @Html.AntiForgeryToken() -->
+            <input type="hidden" name="Id" id="contactId">
+
+            <label>
+                Name
+                <input type="text" name="Name" id="contactName" required>
+            </label>
+
+            <label>
+                Phone
+                <input type="tel" name="Phone" id="contactPhone">
+            </label>
+
+            <label>
+                Address
+                <input type="text" name="Address" id="contactAddress">
+            </label>
+
+            <label>
+                DOB
+                <input type="text" name="DOB" id="contactDOB" />
+            </label>
+
+            <label>
+                Remark
+                <input type="text" name="Remark" id="contactRemark"/>
+            </label>
+
+            
+
+            <div class="modal-actions">
+                <button type="submit" class="btn-primary">Save</button>
+                <button type="button" class="btn-secondary" data-close>Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+@section Scripts {
+    <script src="~/js/UpdateContact.js"></script>
+}

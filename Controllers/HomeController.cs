@@ -142,14 +142,15 @@ namespace contact_Manger.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdatePopUp(int id, ContactDto contactData)
-        {
+        public async Task<IActionResult> UpdatePopUp([FromBody]ContactDto contactData)
+            {
             try
             {
-                var contact = await _context.contacts.FindAsync(id);
+                var contact = await _context.contacts.FindAsync(contactData.Id);
 
                 if(contact == null)
                 {
+                    return BadRequest();
                     return Json(new { success = false, message = "Invalid contact" });
                 }
 

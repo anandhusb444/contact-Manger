@@ -170,5 +170,25 @@ namespace contact_Manger.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteContactTable()
+        {
+
+            try
+            {
+                var deletedContacts = await _context.contacts.AsNoTracking()
+                    .Where(c => c.IsDeleted == true)
+                    .ToListAsync();
+
+                return View(deletedContacts);
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.Message);
+            }
+
+        }
     }
 }
